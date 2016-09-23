@@ -57,8 +57,6 @@ poi_names = [
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
-str = "test"
-
 name_list = {}
 for i in enron_data:
 	if i != 'TOTAL':
@@ -69,4 +67,18 @@ for i in enron_data:
 def pullDataFor(name):
 	print enron_data[name_list[name]]
 
-pullDataFor("Jeffrey Skilling")
+def convertPOI_Names():
+	converted_poi_names = []
+	for i in poi_names:
+		name = i .split(', ')
+		name = name[0].upper() + " " + name[1].upper()
+		converted_poi_names.append(name)
+	return converted_poi_names
+#
+# def obtain
+#
+# convPOI_names = convertPOI_Names()
+# names_from_Data =
+
+
+
