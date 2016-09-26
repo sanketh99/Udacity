@@ -61,11 +61,9 @@ name_list = {}
 for i in enron_data:
 	if i != 'TOTAL':
 		name_split = i.split()
-		name = name_split[1].lower().capitalize() + " " + name_split[0].lower().capitalize()
+		name = name_split[0].lower().capitalize() + ", " + name_split[1].lower().capitalize()
 		name_list[name] = i
 
-def pullDataFor(name):
-	print enron_data[name_list[name]]
 
 def convertPOI_Names():
 	converted_poi_names = []
@@ -74,11 +72,21 @@ def convertPOI_Names():
 		name = name[0].upper() + " " + name[1].upper()
 		converted_poi_names.append(name)
 	return converted_poi_names
-#
-# def obtain
-#
-# convPOI_names = convertPOI_Names()
-# names_from_Data =
 
+def obtainDataForPOIs():
+	data = {}
+	enron_names = []
+	for i in name_list:
+		enron_names.append(i)
 
+	POIs_in_enron_data = set(enron_names).intersection(poi_names)
+	for i in POIs_in_enron_data:
+		data[name_list[i]] = enron_data[name_list[i]]
+	return data
 
+print len(enron_data)
+eh = 0
+for i in enron_data:
+	if enron_data[i]['total_payments'] == 'NaN':
+		eh += 1
+print eh
